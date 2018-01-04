@@ -29,7 +29,7 @@ RUN curl -fSL $MIRROR/$NIFI_BINARY_URL -o $NIFI_BASE_DIR/nifi-$NIFI_VERSION-bin.
 
 COPY nifi-custom-processors-nar-1.4.0.nar ${NIFI_HOME}/lib/nifi-custom-processors-nar-1.4.0.nar
 
-COPY conf/* ${NIFI_HOME}/conf
+COPY conf/* ${NIFI_HOME}/conf/
 
 
 #RUN chown -R nifi:nifi ${NIFI_HOME}/lib/*
