@@ -15,7 +15,7 @@ ENV NIFI_HOME=$NIFI_BASE_DIR/nifi-$NIFI_VERSION \
 # Setup NiFi user
 RUN groupadd -g $GID nifi || groupmod -n nifi `getent group $GID | cut -d: -f1` \
     && useradd --shell /bin/bash -u $UID -g $GID -m nifi \
-    && mkdir -p $NIFI_HOME/conf
+    && mkdir -p $NIFI_HOME/conf \
     && chown -R nifi:nifi $NIFI_BASE_DIR
 
 USER nifi
