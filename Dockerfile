@@ -25,7 +25,7 @@ RUN mkdir -p ${NIFI_DATA_DIR}/data/templates \
 	&& mkdir -p ${NIFI_DATA_DIR}/flowfile_repository \
 	&& mkdir -p ${NIFI_DATA_DIR}/content_repository \
 	&& mkdir -p ${NIFI_DATA_DIR}/provenance_repository \
-	&& chown -R nifi:nfi ${NIFI_DATA_DIR}  
+	&& chown -R nifi:nifi ${NIFI_DATA_DIR}  
 
 USER nifi
 
