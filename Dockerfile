@@ -10,13 +10,22 @@ ARG MIRROR=https://archive.apache.org/dist
 
 ENV NIFI_BASE_DIR /opt/nifi 
 ENV NIFI_HOME=$NIFI_BASE_DIR/nifi-$NIFI_VERSION \
-    NIFI_BINARY_URL=/nifi/$NIFI_VERSION/nifi-$NIFI_VERSION-bin.tar.gz
+    NIFI_BINARY_URL=/nifi/$NIFI_VERSION/nifi-$NIFI_VERSION-bin.tar.gz \
+    NIFI_DATA_DIR=/opt/data
 
 # Setup NiFi user
 RUN groupadd -g $GID nifi || groupmod -n nifi `getent group $GID | cut -d: -f1` \
     && useradd --shell /bin/bash -u $UID -g $GID -m nifi \
     && mkdir -p $NIFI_HOME/conf \
     && chown -R nifi:nifi $NIFI_BASE_DIR
+    
+#Create data dirs
+RUN mkdir -p ${NIFI_DATA_DIR}/data/templates \
+	&& mkdir -p ${NIFI_DATA_DIR}/database_repository \
+	&& mkdir -p ${NIFI_DATA_DIR}/flowfile_repository \
+	&& mkdir -p ${NIFI_DATA_DIR}/content_repository \
+	&& mkdir -p ${NIFI_DATA_DIR}/provenance_repository \
+	&& chown -R nifi:nfi ${NIFI_DATA_DIR}  
 
 USER nifi
 
