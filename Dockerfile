@@ -25,6 +25,7 @@ RUN mkdir -p ${NIFI_DATA_DIR}/data/templates \
 	&& mkdir -p ${NIFI_DATA_DIR}/flowfile_repository \
 	&& mkdir -p ${NIFI_DATA_DIR}/content_repository \
 	&& mkdir -p ${NIFI_DATA_DIR}/provenance_repository \
+	&& mkdir -p ${NIFI_DATA_DIR}/logs \
 	&& chown -R nifi:nifi ${NIFI_DATA_DIR}  
 
 USER nifi
@@ -37,6 +38,8 @@ RUN curl -fSL $MIRROR/$NIFI_BINARY_URL -o $NIFI_BASE_DIR/nifi-$NIFI_VERSION-bin.
     && chown -R nifi:nifi $NIFI_HOME
 
 COPY nifi-custom-processors-nar-1.4.0.nar ${NIFI_HOME}/lib/nifi-custom-processors-nar-1.4.0.nar
+
+COPY nifi-websocket-services-jetty-nar-1.4.0.nar ${NIFI_HOME}/lib/nifi-websocket-services-jetty-nar-1.4.0.nar
 
 COPY conf/* ${NIFI_HOME}/conf/
 
