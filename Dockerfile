@@ -37,9 +37,7 @@ RUN curl -fSL $MIRROR/$NIFI_BINARY_URL -o $NIFI_BASE_DIR/nifi-$NIFI_VERSION-bin.
     && rm $NIFI_BASE_DIR/nifi-$NIFI_VERSION-bin.tar.gz \
     && chown -R nifi:nifi $NIFI_HOME
 
-COPY nifi-custom-processors-nar-1.4.0.nar ${NIFI_HOME}/lib/nifi-custom-processors-nar-1.4.0.nar
-
-COPY nifi-websocket-services-jetty-nar-1.4.0.nar ${NIFI_HOME}/lib/nifi-websocket-services-jetty-nar-1.4.0.nar
+COPY lib/* ${NIFI_HOME}/lib/
 
 COPY conf/* ${NIFI_HOME}/conf/
 
