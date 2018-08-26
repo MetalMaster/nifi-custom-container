@@ -1,11 +1,11 @@
-from apache/nifi:1.4.0
+from apache/nifi:1.7.1
 
 FROM openjdk:8-jre
 LABEL maintainer "Apache NiFi <dev@nifi.apache.org>"
 
 ARG UID=1000
 ARG GID=1000
-ARG NIFI_VERSION=1.4.0
+ARG NIFI_VERSION=1.7.1
 ARG MIRROR=https://archive.apache.org/dist
 
 ENV NIFI_BASE_DIR /opt/nifi 
